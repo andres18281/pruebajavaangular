@@ -1,0 +1,36 @@
+package com.example.demo.controller;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.web.bind.annotation.*;
+
+
+
+import com.example.demo.entity.Cliente;
+import com.example.demo.service.ICliente;
+
+
+@RestController
+@RequestMapping("/api/clientes")
+public class ClienteController {
+
+	@Autowired
+	private ICliente iCliente;
+	
+	@PostMapping
+    public Cliente createCliente(@RequestBody Cliente cliente) {
+        return iCliente.save(cliente);
+    }
+	
+	@GetMapping
+	public List<Cliente> GetCliente() {
+		System.out.print(this.iCliente.consultarClientes());
+		return this.iCliente.consultarClientes();
+	}
+	
+	
+	
+}

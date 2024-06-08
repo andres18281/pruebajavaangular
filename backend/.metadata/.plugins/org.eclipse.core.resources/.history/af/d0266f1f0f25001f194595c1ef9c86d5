@@ -1,0 +1,51 @@
+package com.example.demo.controller;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.Arrays;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.web.servlet.MockMvc;
+
+@SpringBootTest
+@AutoConfigureMockMvc
+public class ClienteControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private ClienteService clienteService;
+
+    private Cliente cliente;
+
+    @BeforeEach
+    public void setUp() {
+        cliente = new Cliente();
+        cliente.setSharedKey("key1");
+        cliente.setBusinessId("business1");
+        cliente.setEmail("test@example.com");
+        cliente.setPhone(123456789);
+        cliente.setDateinitial("2021-01-01");
+        cliente.setDateend("2021-12-31");
+    }
+
+    @Test
+    @WithMockUser(username = "user", roles = { "USER" })
+    public void testGetCliente() throws Exception {
+        when(clienteService.consultarClientes()).thenReturn(Arrays.asList(cliente));
+        
+        mockMvc.perform(get("/api/clientes")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[{\"sharedKey\":\"key1\",\"businessId\":\"business1\",\"email\":\"test@example.com\",\"phone\":123456789,\"dateinitial\":\"2021-01-01\",\"dateend\":\"2021-12-31\"}]"));
+    }
+}

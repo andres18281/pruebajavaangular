@@ -1,0 +1,28 @@
+package com.example.demo.implement;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entity.Cliente;
+import com.example.demo.repository.ClienteRepository;
+
+@Service
+public class ClienteImpl implements ICliente {
+	
+	@Autowired
+	private ClienteRepository repository;
+	@Override
+	public Cliente createCliente(Cliente client) {
+		this.repository.save(client);
+		return null;
+		
+	}
+
+	@Override
+	public List<Cliente> ConsultarClientes() {
+		return this.repository.findAll();
+	}
+
+}

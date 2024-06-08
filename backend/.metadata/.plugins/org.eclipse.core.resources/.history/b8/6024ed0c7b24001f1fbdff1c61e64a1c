@@ -1,0 +1,14 @@
+package com.example.demo.implement;
+
+
+import java.util.List;
+
+
+import com.example.demo.entity.Cliente;
+
+public interface ICliente {
+ 
+	Cliente createCliente(Cliente client);
+	List<Cliente> ConsultarClientes();
+	
+}
