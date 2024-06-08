@@ -1,0 +1,20 @@
+<table class="table table-bordered">
+    <thead>
+        <td>Shared Key</td>
+        <td>Busisness id</td>
+        <td>Email</td>
+        <td>Phone</td>
+        <td>Data Added</td>
+        <td></td>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of clientes">
+            <td>{{cliente.sharedKey}}</td>
+            <td>{{cliente.phone}}</td>
+            <td>{{cliente.email}}</td>
+            <td>{{cliente.dateinitial}}</td>
+            <td>{{cliente.dateend}}</td>
+            <td><button class="btn btn-warning" (click)="Editar(cliente.businessId)">Editar</button></td>
+        </tr>
+    </tbody>
+</table>

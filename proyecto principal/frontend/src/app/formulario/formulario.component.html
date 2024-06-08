@@ -1,0 +1,28 @@
+<div class="card border-primary">
+
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="campo1">businessId</label>
+          <input type="text" formControlName="businessId" class="form-control" id="campo1" placeholder="Ingrese texto">
+        </div>
+        <div class="form-group">
+          <label for="campo2">Phone</label>
+          <input type="text" formControlName="phone" class="form-control" id="campo2" placeholder="Ingrese texto">
+        </div>
+        <div class="form-group">
+          <label for="campo3">E-mail</label>
+          <input type="text" formControlName="email" class="form-control" id="campo3" placeholder="Ingrese texto">
+        </div>
+        <div class="form-group">
+          <label for="campo4">Start date</label>
+          <input type="date" formControlName="dateinitial" class="form-control" id="campo4" placeholder="Ingrese texto">
+        </div>
+        <div class="form-group">
+          <label for="campo5">End date</label>
+          <input type="date" formControlName="dateend" class="form-control" id="campo5" placeholder="Ingrese texto">
+        </div>
+        <div class="row">
+          <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
+      </form>
+</div>

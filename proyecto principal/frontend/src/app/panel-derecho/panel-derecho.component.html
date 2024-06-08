@@ -1,0 +1,29 @@
+<div class="container"><br><br><br><br>
+  <div class="row">
+    <div class="col-6">
+        <button class="btn btn-success" (click)="Mostrar()">
+            New
+        </button>
+        <button class="btn btn-success">
+            Export
+        </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-inline">
+        <div class="form-group mb-2">
+          <input type="text" class="form-control" [(ngModel)]="textoBuscar" id="searchInput" placeholder="Buscar...">
+        </div>
+        <button class="btn btn-primary mb-2 ml-2" (click)="Buscar()">Buscar</button>
+    </div>
+  </div>
+  <div class="row" >
+    <app-formulario *ngIf="showFormulario"></app-formulario>
+    
+
+  </div>
+  <div class="row">
+    <app-tabla-clientes></app-tabla-clientes>
+  </div>
+</div>
