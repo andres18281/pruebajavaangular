@@ -52,4 +52,24 @@ export class ClientesService {
     
   }
 
+  exportClientesToCSV() {
+    this.request.exportClientesToCSV()
+      .subscribe(csvData => {
+        this.downloadCSV(csvData, 'clientes.csv');
+      }, error => {
+        console.error('Error al exportar datos a CSV:', error);
+      });
+  }
+  
+  private downloadCSV(data: any, filename: string) {
+    const csvContent = 'data:text/csv;charset=utf-8,' + encodeURIComponent(data);
+    const link = document.createElement('a');
+    link.setAttribute('href', csvContent);
+    link.setAttribute('download', filename);
+  
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
 }

@@ -17,7 +17,6 @@ export class RequestService {
     return this.http.post(this.crear, value, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer token' // Añade tu token aquí si es necesario
       }
     });
   }
@@ -40,6 +39,13 @@ export class RequestService {
     }).pipe(
       map((response: any) => Array.isArray(response) ? response : [response])
     );
+  }
+
+  exportClientesToCSV(): Observable<any> {
+    const csvExportUrl = `${this.url}/clientes/export/csv`;
+    return this.http.get(csvExportUrl, {
+      responseType: 'text' // Especifica el tipo de respuesta como texto
+    });
   }
 
   

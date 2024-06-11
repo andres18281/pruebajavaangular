@@ -16,7 +16,6 @@ public class ClienteImpl implements ICliente {
 	private ClienteRepository repository;
 	@Override
 	public Cliente save(Cliente client) {
-		System.out.println("prueba"+ client.toString());
 		this.repository.save(client);
 		return client;
 		

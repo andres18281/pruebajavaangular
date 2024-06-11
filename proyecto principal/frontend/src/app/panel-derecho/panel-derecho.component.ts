@@ -33,4 +33,8 @@ export class PanelDerechoComponent {
     
 
   }
+
+  Export() {
+    this.clientesService.exportClientesToCSV();
+  }
 }
